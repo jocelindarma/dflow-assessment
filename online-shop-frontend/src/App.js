@@ -1,11 +1,21 @@
-import './App.css';
-import { Button } from 'react-bootstrap';
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Navbar } from "./components/Navbar";
+import { Shop } from "./pages/Shop";
+import { Cart } from "./pages/Cart";
+import { User } from "./pages/User";
 
 function App() {
   return (
     <div className="App">
-      <h1>DFLOW Indonesia Online Shop</h1>
-      <Button variant="primary">Click me!</Button>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Shop />}/>
+          <Route path="/cart" element={<Cart />}/>
+          <Route path="/user" element={<User />}/>
+        </Routes>
+      </Router>
     </div>
   );
 }

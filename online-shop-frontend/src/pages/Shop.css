@@ -1,0 +1,31 @@
+.products {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.product {
+  margin: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.product .description {
+  text-align: center;
+}
+
+.addToCartBtn {
+  background-color: transparent;
+  border: 2px solid black;
+  min-width: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.addToCartBtn:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
