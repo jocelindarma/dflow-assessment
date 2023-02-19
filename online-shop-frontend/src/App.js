@@ -1,13 +1,12 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Navbar } from "./components/Navbar";
-import { Shop } from "./pages/Shop";
-import { Cart } from "./pages/Cart";
-import { User } from "./pages/User";
-import { Checkout } from "./pages/Checkout";
+import { Navbar } from "./components/navbar/Navbar";
+import { Shop } from "./components/shop/Shop";
+import { Cart } from "./components/cart/Cart";
+import { Checkout } from "./components/checkout/Checkout";
 import { ShopContextProvider } from "./context/ShopContext";
-import { Login } from "./pages/Login";
-import { Signup } from "./pages/Signup";
+import { Login } from "./components/registration/Login";
+import { Signup } from "./components/registration/Signup";
 
 function App() {
   return (
@@ -20,7 +19,6 @@ function App() {
             <Route path="/signup" element={<Signup />}/>
             <Route path="/shop" element={<Shop />}/>
             <Route path="/cart" element={<Cart />}/>
-            <Route path="/user" element={<User />}/>
             <Route path="/checkout" element={<Checkout />}/>
           </Routes>
         </Router>

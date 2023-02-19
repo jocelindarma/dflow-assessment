@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useSelector } from 'react-redux'
-import { ShopContext } from "../context/ShopContext";
+import { ShopContext } from "../../context/ShopContext";
 import { CartItem } from "./CartItem";
 import { useNavigate } from "react-router-dom";
 import "./Cart.css"

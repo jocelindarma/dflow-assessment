@@ -34,7 +34,7 @@ export const Login = () => {
         placeholder="Password"
         onChange={(e) => setPassword(e.target.value)}
       />
-      <Link to="/shop"><button>Submit</button></Link>
+      <Link to="/shop"><button onClick={handleSubmit}>Submit</button></Link>
       <Link to="/signup"> <h5 style={{color: "black"}}>Click here to Sign Up</h5></Link>
     </div>
   );
