@@ -18,9 +18,9 @@ const io = new Server(server, {
 io.on("connect", (socket) => {
   console.log(`User ${socket.id} is connected`);
 
-  socket.on("join_group", (data) => {
-    socket.join(data);
-    console.log(`User ${socket.id} joined group ${data}`);
+  socket.on("join_group", (group) => {
+    socket.join(group);
+    console.log(`User ${socket.id} joined group ${group}`);
   });
 
   socket.on("send_message", (data) => {
