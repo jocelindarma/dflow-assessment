@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
+import { useSelector } from 'react-redux'
 import { ShopContext } from "../context/ShopContext";
-import { PRODUCTS } from "../sampledata";
 import { CartItem } from "./CartItem";
 import { useNavigate } from "react-router-dom";
 import "./Cart.css"
@@ -8,6 +8,8 @@ import "./Cart.css"
 export const Cart = () => {
   const { cartItems, getTotalCartAmount, checkout } = useContext(ShopContext);
   const totalAmount = getTotalCartAmount();
+
+  const products = useSelector(state => state.products)
 
   const navigate = useNavigate();
 
@@ -17,7 +19,8 @@ export const Cart = () => {
         <h1>Your Cart Items</h1>
       </div>
       <div className="cart">
-        {PRODUCTS.map((product) => {
+        {products.map((product) => {
+          console.log(product.id)
           return cartItems[product.id] !== 0? <CartItem data={product} /> : null;
         })}
       </div>

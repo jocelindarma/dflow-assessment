@@ -1,5 +1,7 @@
 import { createContext, useState } from "react";
+import { useSelector } from 'react-redux'
 import { PRODUCTS } from "../sampledata";
+
 
 export const ShopContext = createContext(null);
 
@@ -13,12 +15,13 @@ const getDefaultCart = () => {
 
 export const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
+  const products = useSelector(state => state.products)
 
   const getTotalCartAmount = () => {
     let totalAmount = 0;
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
-        let itemInfo = PRODUCTS.find((product) => product.id === Number(item));
+        let itemInfo = products.find((product) => product.id === Number(item));
         totalAmount += cartItems[item] * itemInfo.price;
       }
     }
