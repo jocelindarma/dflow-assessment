@@ -10,6 +10,10 @@
   justify-content: center;
 }
 
+.product img {
+  width: 400px;
+}
+
 .product .description {
   text-align: center;
 }
