@@ -18,9 +18,7 @@ export const Cart = () => {
       </div>
       <div className="cart">
         {PRODUCTS.map((product) => {
-          if (cartItems[product.id] !== 0) {
-            return <CartItem data={product} />;
-          }
+          return cartItems[product.id] !== 0? <CartItem data={product} /> : null;
         })}
       </div>
 

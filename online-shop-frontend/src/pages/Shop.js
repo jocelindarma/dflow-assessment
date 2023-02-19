@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { PRODUCTS } from "../sampledata";
 import { Product } from "./Product";
-import "./Shop.css"
+import "./Shop.css";
 
 export const Shop = () => {
   return (

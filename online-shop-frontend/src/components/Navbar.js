@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaShoppingCart, FaRegUser } from 'react-icons/fa';
+import { FaShoppingCart, FaRegUser } from "react-icons/fa";
 import "./Navbar.css";
 
 export const Navbar = () => {
@@ -9,10 +9,10 @@ export const Navbar = () => {
       <div className="links">
         <Link to="/"> DFLOW Indonesia Online Shop </Link>
         <Link to="/cart">
-          <FaShoppingCart/>
+          <FaShoppingCart />
         </Link>
         <Link to="/user">
-          <FaRegUser/>
+          <FaRegUser />
         </Link>
       </div>
     </div>

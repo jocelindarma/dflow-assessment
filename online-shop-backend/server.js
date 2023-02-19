@@ -1,8 +1,11 @@
+import express from 'express';
+import mongoose from 'mongoose';
+import PRODUCTS from './sampledata';
+
 require('dotenv').config();
 
-const express = require('express');
 const mongoose = require('mongoose');
-const mongoString = process.env.DATABASE_URL;
+const mongoString = process.env.MONGO_URI;
 
 mongoose.connect(mongoString);
 const database = mongoose.connection;
@@ -16,8 +19,13 @@ database.once('connected', () => {
 })
 const app = express();
 
+app.get('api/products', (red, res) => {
+    res.send(PRODUCTS);
+})
+
 app.use(express.json());
 
-app.listen(3000, () => {
-    console.log(`Server Started at ${3000}`)
+app.listen(5000, () => {
+    console.log(`Server Started at ${5000}`)
 })
+
