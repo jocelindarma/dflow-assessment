@@ -7,7 +7,7 @@ export const Navbar = () => {
   return (
     <div className="navbar">
       <div className="links">
-        <Link to="/"> DFLOW Indonesia Online Shop </Link>
+        <Link to="/shop"> DFLOW Indonesia Online Shop </Link>
         <Link to="/cart">
           <FaShoppingCart />
         </Link>
