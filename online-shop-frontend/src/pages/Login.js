@@ -1,50 +1,40 @@
 import React, {useState} from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import './Login.css'
 
 export const Login = () => {
   const[email, setEmail] = useState("");
   const[password, setPassword] = useState("");
 
-  async function submit(e) {
-    e.preventDefault();
-
-    try{
-      await axios.post("http://localhost:3000/customers/", {
-        email, password
-      })
-    } catch(e){ 
-      console.log(e);
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.get('http://localhost:3000/customers', {
+        email: email,
+        password: password,
+      });
+      console.log(response);
+      setEmail("");
+      setPassword("");
+    } catch (error) {
+      console.log(error);
     }
   }
 
   return (
     <div className="login">
       <h1>Login</h1>
-
-      <form action="POST">
-        <input
-          type="email"
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          name=""
-          id=""
-        />
-        <input
-          type="email"
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          name=""
-          id=""
-        />
-        <input type="submit" onClick={submit}/>
-      </form>
-
-      <br />
-      <p> OR </p>
-      <br />
-
-      <Link to="/signup"> Sign Up</Link>
+      <input
+        type="text"
+        placeholder="Email"
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="Password"
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <Link to="/shop"><button>Submit</button></Link>
+      <Link to="/signup"> <h5 style={{color: "black"}}>Click here to Sign Up</h5></Link>
     </div>
   );
 };
