@@ -11,9 +11,9 @@ export const Navbar = () => {
         <Link to="/cart">
           <FaShoppingCart />
         </Link>
-        <Link to="/user">
+        {/* <Link to="/user">
           <FaRegUser />
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

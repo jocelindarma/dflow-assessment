@@ -25,15 +25,15 @@ function App() {
           <input
             type="text"
             placeholder="Name"
-            onChange={(event) => {
-              setName(event.target.value);
+            onChange={(e) => {
+              setName(e.target.value);
             }}
           />
           <input
             type="text"
             placeholder="Group ID"
-            onChange={(event) => {
-              setGroup(event.target.value);
+            onChange={(e) => {
+              setGroup(e.target.value);
             }}
           />
           <button onClick={joinGroup}>Join Group</button>
