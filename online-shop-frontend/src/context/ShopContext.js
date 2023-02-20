@@ -20,7 +20,7 @@ export const ShopContextProvider = (props) => {
       const initCart = defaultCart(products);
       setCartItems(initCart);
     }
-  }, [products]);
+  }, []);
 
   const getTotalCartAmount = () => {
     let totalAmount = 0;

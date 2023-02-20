@@ -36,8 +36,7 @@ export const Cart = () => {
               navigate("/checkout");
             }}
           >
-            {" "}
-            Checkout{" "}
+            Checkout
           </button>
         </div>
       ) : (
