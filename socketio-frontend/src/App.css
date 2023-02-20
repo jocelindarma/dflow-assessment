@@ -18,7 +18,7 @@ body {
 .join-container input {
   height: 40px;
   margin: 7px;
-  border: 2px solid #075E54;
+  border: 2px solid #075e54;
   border-radius: 5px;
   padding: 5px;
   font-size: 16px;
@@ -32,7 +32,7 @@ body {
   border-radius: 5px;
   padding: 5px;
   font-size: 16px;
-  background: #075E54;
+  background: #075e54;
   color: #fff;
   cursor: pointer;
 }
@@ -76,7 +76,7 @@ body {
 
 .chat .chat-body .message .message-content {
   max-width: 150px;
-  background-color: #BBBBBB;
+  background-color: #bbbbbb;
   border-radius: 5px;
   color: white;
   display: flex;
@@ -93,7 +93,7 @@ body {
 
 #you .message-content {
   justify-content: flex-end;
-  background-color: #075E54;
+  background-color: #075e54;
 }
 
 #you .message-name {
@@ -119,7 +119,7 @@ body {
   border: 0;
   padding: 0 0.7em;
   font-size: 1em;
-  border-right: 1px solid #BBBBBB;
+  border-right: 1px solid #bbbbbb;
   outline: none;
 }
 
@@ -131,5 +131,5 @@ body {
 }
 
 .chat .chat-footer button:hover {
-  color: #075E54;
+  color: #075e54;
 }

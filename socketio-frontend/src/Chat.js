@@ -35,10 +35,7 @@ const Chat = ({ socket, name, group }) => {
         <ScrollToBottom className="scroll-container">
           {messages.map((message) => {
             return (
-              <div
-                className="message"
-                id={name === message.name ? "you" : ""}
-              >
+              <div className="message" id={name === message.name ? "you" : ""}>
                 <div>
                   <div className="message-content">
                     <p>{message.message}</p>
