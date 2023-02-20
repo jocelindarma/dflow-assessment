@@ -5,14 +5,14 @@ const Product = require('../models/product')
 router.get('/', async (req, res) => {
   try {
     const products = await Product.find()
-    res.json(products)
+    res.send(products)
   } catch (err) {
-    res.status(500).json({ message: err.message })
+    res.send({ message: err.message })
   }
 })
 
 router.get('/:id', getProduct, (req, res) => {
-  res.json(res.product)
+  res.send(res.product)
 })
 
 router.post('/', async (req, res) => {
@@ -24,9 +24,9 @@ router.post('/', async (req, res) => {
   })
   try {
     const newProduct = await product.save()
-    res.status(201).json(newProduct)
+    res.send(newProduct)
   } catch (err) {
-    res.status(400).json({ message: err.message })
+    res.send({ message: err.message })
   }
 })
 
@@ -45,18 +45,18 @@ router.patch('/:id', getProduct, async (req, res) => {
   }
   try {
     const updatedProduct = await res.product.save()
-    res.json(updatedProduct)
+    res.send(updatedProduct)
   } catch (err) {
-    res.status(400).json({ message: err.message })
+    res.send({ message: err.message })
   }
 })
 
 router.delete('/:id', getProduct, async (req, res) => {
   try {
     await res.product.remove()
-    res.json({ message: 'Deleted Product' })
+    res.send({ message: 'Deleted Product' })
   } catch (err) {
-    res.status(500).json({ message: err.message })
+    res.send({ message: err.message })
   }
 })
 
@@ -65,10 +65,10 @@ async function getProduct(req, res, next) {
   try {
     product = await Product.findById(req.params.id)
     if (product == null) {
-      return res.status(404).json({ message: 'Cannot find product' })
+      return res.send({ message: 'Cannot find product' })
     }
   } catch (err) {
-    return res.status(500).json({ message: err.message })
+    return res.send({ message: err.message })
   }
 
   res.product = product

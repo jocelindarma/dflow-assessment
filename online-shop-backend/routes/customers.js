@@ -1,30 +1,45 @@
 const express = require('express')
+const bcrypt = require('bcryptjs');
+
 const router = express.Router()
 const Customer = require('../models/customer')
 
 router.get('/', async (req, res) => {
   try {
     const customers = await Customer.find()
-    res.json(customers)
+    res.send(customers)
   } catch (err) {
-    res.status(500).json({ message: err.message })
+    res.send({ message: err.message })
   }
 })
 
-router.get('/:id', getCustomer, (req, res) => {
-  res.json(res.customer)
+router.get('/:email', async (req, res) => {
+  try {
+    const existingCustomer = await Customer.findOne({email: req.params.email})
+    if(existingCustomer){
+      return res.send({ message: 'Login Successful' })
+    }
+  } catch (err) {
+    res.send({ message: err.message })
+  }
 })
 
 router.post('/', async (req, res) => {
-  const customer = new Customer({
-    email: req.body.email,
-    password: req.body.password
-  })
+  const { email, password } = req.body;
+  const encryptedPass = await bcrypt.hash(password, 10);
+
   try {
-    const newCustomer = await customer.save()
-    res.status(201).json(newCustomer)
+    const existingCustomer = await Customer.findOne({email})
+    if(existingCustomer){
+      return res.send({ message: 'Existing User' })
+    }
+    const newCustomer = await Customer.create({
+      email,
+      password: encryptedPass,
+    })
+    res.send(newCustomer)
   } catch (err) {
-    res.status(400).json({ message: err.message })
+    res.send({ message: err.message })
   }
 })
 
@@ -37,18 +52,18 @@ router.patch('/:id', getCustomer, async (req, res) => {
   }
   try {
     const updatedCustomer = await res.customer.save()
-    res.json(updatedCustomer)
+    res.send(updatedCustomer)
   } catch (err) {
-    res.status(400).json({ message: err.message })
+    res.send({ message: err.message })
   }
 })
 
 router.delete('/:id', getCustomer, async (req, res) => {
   try {
     await res.customer.remove()
-    res.json({ message: 'Deleted Customer' })
+    res.send({ message: 'Deleted Customer' })
   } catch (err) {
-    res.status(500).json({ message: err.message })
+    res.send({ message: err.message })
   }
 })
 
@@ -57,10 +72,10 @@ async function getCustomer(req, res, next) {
   try {
     customer = await Customer.findById(req.params.id)
     if (customer == null) {
-      return res.status(404).json({ message: 'Cannot find customer' })
+      return res.send({ message: 'Cannot find customer' })
     }
   } catch (err) {
-    return res.status(500).json({ message: err.message })
+    return res.send({ message: err.message })
   }
 
   res.customer = customer
