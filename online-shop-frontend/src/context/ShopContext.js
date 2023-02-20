@@ -13,14 +13,16 @@ const defaultCart = (products) => {
 
 export const ShopContextProvider = (props) => {
   const products = useSelector((state) => state.products);
-  const [cartItems, setCartItems] = useState();
+  const [cartItems, setCartItems] = useState(() => {
+    const cartItemsFromStorage = localStorage.getItem("cartItems");
+    return cartItemsFromStorage
+      ? JSON.parse(cartItemsFromStorage)
+      : defaultCart(products);
+  });
 
   useEffect(() => {
-    if (products) {
-      const initCart = defaultCart(products);
-      setCartItems(initCart);
-    }
-  }, []);
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   const getTotalCartAmount = () => {
     let totalAmount = 0;
@@ -47,6 +49,7 @@ export const ShopContextProvider = (props) => {
 
   const checkout = () => {
     setCartItems(defaultCart(products));
+    localStorage.removeItem("cartItems");
   };
 
   const contextValue = {
