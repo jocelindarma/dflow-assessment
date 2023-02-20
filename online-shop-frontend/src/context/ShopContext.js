@@ -1,21 +1,21 @@
 import { createContext, useState } from "react";
-import { useSelector } from 'react-redux'
-import { PRODUCTS } from "../sampledata";
-
+import { useSelector } from "react-redux";
 
 export const ShopContext = createContext(null);
 
-const getDefaultCart = () => {
+const getDefaultCart = (products) => {
+  console.log(products);
   let cart = {};
-  for (let i = 1; i < PRODUCTS.length + 1; i++) {
+  for (let i = 1; i < products.length + 1; i++) {
     cart[i] = 0;
   }
   return cart;
 };
 
 export const ShopContextProvider = (props) => {
-  const [cartItems, setCartItems] = useState(getDefaultCart());
-  const products = useSelector(state => state.products)
+  const products = useSelector((state) => state.products);
+  const initCartItems = getDefaultCart(products);
+  const [cartItems, setCartItems] = useState(initCartItems);
 
   const getTotalCartAmount = () => {
     let totalAmount = 0;
@@ -41,7 +41,7 @@ export const ShopContextProvider = (props) => {
   };
 
   const checkout = () => {
-    setCartItems(getDefaultCart());
+    setCartItems(getDefaultCart(products));
   };
 
   const contextValue = {
