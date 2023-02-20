@@ -7,7 +7,7 @@ export const Signup = () => {
   const [password, setPassword] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const handlePostRequest = async () => {
+  const handleSubmit = async () => {
     try {
       const response = await axios.post("http://localhost:3000/customers", {
         email: email,
@@ -35,7 +35,7 @@ export const Signup = () => {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
           />
-          <button onClick={handlePostRequest}>Submit</button>
+          <button onClick={handleSubmit}>Submit</button>
         </div>
       ) : (
         <h1>Registration Successful!</h1>

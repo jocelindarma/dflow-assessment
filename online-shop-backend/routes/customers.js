@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const router = express.Router();
 const Customer = require("../models/customer");
 
+// Get all customers
 router.get("/", async (req, res) => {
   try {
     const customers = await Customer.find();
@@ -13,6 +14,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Login Validation
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -34,6 +36,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// Create new customer
 router.post("/", async (req, res) => {
   const { email, password } = req.body;
   const encryptedPass = await bcrypt.hash(password, 10);
@@ -53,6 +56,7 @@ router.post("/", async (req, res) => {
   }
 });
 
+// Update a customer 
 router.patch("/:id", getCustomer, async (req, res) => {
   if (req.body.name != null) {
     res.customer.name = req.body.name;
@@ -68,6 +72,7 @@ router.patch("/:id", getCustomer, async (req, res) => {
   }
 });
 
+// Delete a customer
 router.delete("/:id", getCustomer, async (req, res) => {
   try {
     await res.customer.remove();
