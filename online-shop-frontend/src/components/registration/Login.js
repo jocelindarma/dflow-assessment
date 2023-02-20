@@ -14,12 +14,20 @@ export const Login = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:3000/customers/${email}`
+      const response = await axios.post(
+        "http://localhost:3000/customers/login",
+        {
+          email: email,
+          password: password,
+        }
       );
+      console.log(response);
       if (response.data.message === "Not Found") {
         setLoginSuccess(false);
         toast.error("Customer Not Found. Please Sign Up.");
+      } else if (response.data.message === "Wrong Password") {
+        setLoginSuccess(false);
+        toast.error("Wrong Email and Password Combination");
       } else {
         navigate("/shop");
       }

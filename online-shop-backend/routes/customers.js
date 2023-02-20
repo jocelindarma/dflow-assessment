@@ -13,16 +13,22 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:email", async (req, res) => {
+router.post("/login", async (req, res) => {
+  const { email, password } = req.body;
   try {
-    const existingCustomer = await Customer.findOne({
-      email: req.params.email,
-    });
-    if (existingCustomer) {
-      return res.send({ message: "Login Successful" });
-    } else {
-      return res.send({ message: "Not Found" });
-    }
+    const existingCustomer = await Customer.findOne({ email: email });
+    if (!existingCustomer) return res.send({ message: "Not Found" });
+
+    const savedPassword = existingCustomer.password;
+    console.log(existingCustomer.password)
+    console.log(password)
+    bcrypt.compare(password, savedPassword).then((match) => {
+      if(!match){
+        return res.send({ message: "Wrong Password"})
+      } else {
+        return res.send({ message: "Login Successful" });
+      }
+    })
   } catch (err) {
     res.send({ message: err.message });
   }
