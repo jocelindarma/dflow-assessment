@@ -15,11 +15,11 @@ function App() {
         <Router>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Login />}/>
-            <Route path="/signup" element={<Signup />}/>
-            <Route path="/shop" element={<Shop />}/>
-            <Route path="/cart" element={<Cart />}/>
-            <Route path="/checkout" element={<Checkout />}/>
+            <Route path="/" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </Router>
       </ShopContextProvider>

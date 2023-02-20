@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
 export const Checkout = () => {
   return (
-    <div className='checkout'>
+    <div className="checkout">
       <h1> Thank you for your order! </h1>
     </div>
-  )
-}
+  );
+};
