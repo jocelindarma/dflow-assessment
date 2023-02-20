@@ -18,8 +18,7 @@ body {
 .join-container input {
   height: 40px;
   margin: 7px;
-  border: 2px solid #075e54;
-  border-radius: 5px;
+  border: 2px solid black;
   padding: 5px;
   font-size: 16px;
 }
@@ -29,10 +28,9 @@ body {
   height: 50px;
   margin: 7px;
   border: none;
-  border-radius: 5px;
   padding: 5px;
   font-size: 16px;
-  background: #075e54;
+  background: black;
   color: #fff;
   cursor: pointer;
 }
