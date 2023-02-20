@@ -19,7 +19,7 @@ router.get('/:email', async (req, res) => {
     if(existingCustomer){
       return res.send({ message: 'Login Successful' })
     } else {
-      return res.send({ message: 'Customer Not Found. Please Sign Up' })
+      return res.send({ message: 'Not Found' })
     }
   } catch (err) {
     res.send({ message: err.message })
