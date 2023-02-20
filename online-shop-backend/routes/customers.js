@@ -18,6 +18,8 @@ router.get('/:email', async (req, res) => {
     const existingCustomer = await Customer.findOne({email: req.params.email})
     if(existingCustomer){
       return res.send({ message: 'Login Successful' })
+    } else {
+      return res.send({ message: 'Customer Not Found. Please Sign Up' })
     }
   } catch (err) {
     res.send({ message: err.message })
